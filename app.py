@@ -228,7 +228,7 @@ with st.sidebar:
     for ex in examples:
         label = ex[:58] + "..." if len(ex) > 58 else ex
         if st.button(label, key=ex, use_container_width=True):
-            st.session_state["prefill"] = ex
+            st.session_state["selected_question"] = ex
             st.rerun()
 
     st.markdown("---")
@@ -249,12 +249,12 @@ except Exception as e:
     st.error(f"Failed to load: {e}")
     st.stop()
 
-# Pre-fill from sidebar button
-prefill = st.session_state.pop("prefill", "")
+# Handle selected question from sidebar
+selected = st.session_state.get("selected_question", "")
 
 question = st.text_area(
     "Clinical Evidence Question",
-    value=prefill,
+    value=selected,
     placeholder="e.g. What are the drug interactions between rifampicin and dolutegravir in HIV/TB coinfection?",
     height=100,
     key="q_input"
@@ -263,6 +263,11 @@ question = st.text_area(
 col1, _ = st.columns([1, 5])
 with col1:
     run = st.button("Analyse Evidence", type="primary", use_container_width=True)
+
+# Auto-run when question selected from sidebar
+if selected and not run:
+    run = True
+    st.session_state.pop("selected_question", None)
 
 if run and question.strip():
     with st.spinner("Retrieving evidence and generating analysis..."):
