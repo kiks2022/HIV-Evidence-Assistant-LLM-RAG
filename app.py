@@ -56,27 +56,13 @@ st.markdown("""
 # ── Vector search (no LangChain, no ChromaDB) ─────────────────────────────────
 @st.cache_resource(show_spinner="Loading knowledge base...")
 def load_resources():
-    # Load embedding model
     model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
-
-    # Load chunks from JSON — built from Colab and committed to GitHub
-    chunks_path = "chunks.json"
-    if not os.path.exists(chunks_path):
-        st.error("chunks.json not found. Please run the export cell in Colab.")
-        st.stop()
-
-    with open(chunks_path) as f:
+    with open("chunks.json") as f:
         data = json.load(f)
-
     texts     = [d["text"]     for d in data]
     metadatas = [d["metadata"] for d in data]
-
-    # Embed all chunks — cached so only runs once
-    embeddings = model.encode(texts, normalize_embeddings=True, show_progress_bar=False)
-
-    # Groq client
+    embeddings = np.load("embeddings.npy")
     groq_client = Groq(api_key=os.environ["GROQ_API_KEY"])
-
     return model, embeddings, texts, metadatas, groq_client, len(texts)
 
 
