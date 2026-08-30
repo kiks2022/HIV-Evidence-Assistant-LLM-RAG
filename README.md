@@ -102,7 +102,7 @@ This project was built by someone with an MPH background working at the intersec
 
 ---
 
-## Running locally
+## Running locally - How to run on your local computer
 
 ```bash
 git clone https://github.com/kiks2022/HIV-Evidence-Assistant-LLM-RAG
