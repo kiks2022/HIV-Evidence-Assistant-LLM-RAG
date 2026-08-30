@@ -115,7 +115,7 @@ streamlit run app.py
 
 ---
 
-## Roadmap
+## Roadmap - What Next?
 
 - **Hybrid retrieval** — add BM25 keyword search alongside the current semantic search so drug names and acronyms like TDF, DTG, and cabotegravir are retrieved more reliably
 - **Reranking** — after the initial retrieval, pass the chunks through a cross-encoder model to re-score them by true relevance before sending to the LLM
