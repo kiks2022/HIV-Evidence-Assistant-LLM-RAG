@@ -1,0 +1,15 @@
+name: Keep Streamlit App Alive
+
+on:
+  schedule:
+    # Runs every 4 hours. Adjust as needed (e.g., '0 */6 * * *' for every 6 hours)
+    - cron: "0 */4 * * *"
+  workflow_dispatch: # Allows you to run it manually anytime
+
+jobs:
+  ping-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send HTTP request to wake Streamlit app
+        run: |
+          curl -s -o /dev/null -w "HTTP Status: %{http_code}\n"https://hiv-evidence-assistant.streamlit.app/
