@@ -1,6 +1,6 @@
 # 🧬 HIV Clinical Evidence Assistant
 
-A clinical evidence research tool built for pharmacists, public health professionals, and clinicians working in Nigeria and sub-Saharan Africa. It retrieves real PubMed research and current HIV treatment guidelines, compares them side by side, and flags when they conflict — so the clinician can make their own informed judgment rather than getting a single answer from a black box.
+A clinical evidence research tool built for researchers. It retrieves real PubMed research and current HIV treatment guidelines, compares them side by side, and flags when they conflict — so the clinician can make their own informed judgment rather than getting a single answer from a black box.
 
 **Live demo:** [HIV Clinical Evidence Assistant · Streamlit](https://hiv-evidence-assistant.streamlit.app/)
 
@@ -99,7 +99,6 @@ The current version uses direct API calls, pure numpy for retrieval, and pre-com
 
 This project was built by someone with an MPH background working at the intersection of public health, pharmacy, and data science. The Nigeria-specific focus came from a real frustration with tools that present US guidelines as if they are globally applicable — they are not, and the difference matters clinically.
 
-The goal was to build something that a pharmacist at an APIN-supported ART site in Nigeria could actually use — not a demo that looks impressive in a conference room but falls apart the moment someone asks a question that matters.
 
 ---
 
